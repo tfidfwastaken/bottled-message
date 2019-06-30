@@ -1,0 +1,21 @@
+{% extends "starter.html" %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <form action="/submit" method="post" id="bottletextarea">
+        <div class="form-group">
+          <label for="bottletextarea">Enter your message to bottle up</label>
+          <textarea class="form-control" id="bottletextarea" name="bottletext" rows="15"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Fling bottle into the sea!</button>
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <button type="submit" class="btn btn-dark">Find Bottle</button>
+      <p>Message Appears Here</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
