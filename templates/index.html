@@ -9,13 +9,42 @@
           <label for="bottletextarea">Enter your message to bottle up</label>
           <textarea class="form-control" id="bottletextarea" name="bottletext" rows="15"></textarea>
         </div>
-        <button type="submit" class="btn btn-dark">Fling bottle into the sea!</button>
+        <button type="submit" class="btn btn-dark" data-toggle="modal" data-target="#confirm-modal">Fling bottle into the sea!</button>
       </form>
     </div>
     <div class="col-lg-6">
-      <button type="submit" class="btn btn-dark">Find Bottle</button>
-      <p>Message Appears Here</p>
+      <form action="/retrieve" method="get">
+        <button type="submit" class="btn btn-dark">Find Bottle</button>
+        <p>{{ message }}</p>
+      </form>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="confirm-mod-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirm-mod-label">Bottler</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ "Confirmed" if confirmed else "Please enter a message" }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if request.path == "/submit" %}
+<script type="text/javascript">
+  $('#confirm-modal').modal('show');
+</script>
+{% endif %}
+
 {% endblock %}
